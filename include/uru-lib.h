@@ -1,5 +1,6 @@
 #pragma once
 
+#include <esp_log.h>
 #include <esp_err.h>
 
 #ifndef ESP_CHECK_RET

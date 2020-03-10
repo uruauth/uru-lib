@@ -1,7 +1,15 @@
 #pragma once
 
-#include <esp_log.h>
 #include <esp_err.h>
+#include <esp_log.h>
+
+#ifndef MIN
+#define MIN(a, b) (((a) < (b)) ? (a) : (b))
+#endif
+
+#ifndef MAX
+#define MAX(a, b) (((a) > (b)) ? (a) : (b))
+#endif
 
 #ifndef ESP_CHECK_RET
 #define ESP_CHECK_RET(f)                                                                                    \
@@ -13,4 +21,22 @@
             return _ret;                                                                                    \
         }                                                                                                   \
     }
+#endif
+
+#ifndef STRING_BUFFER_STRUCT
+#define STRING_BUFFER_STRUCT(name, val_len) \
+    struct                                  \
+    {                                       \
+        char val[val_len];                  \
+        size_t len;                         \
+    } name;
+#endif
+
+#ifndef BYTE_BUFFER_STRUCT
+#define BYTE_BUFFER_STRUCT(name, val_len) \
+    struct                                \
+    {                                     \
+        uint8_t val[val_len];             \
+        size_t len;                       \
+    } name;
 #endif
